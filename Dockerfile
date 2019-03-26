@@ -71,4 +71,4 @@ RUN \
   && rm -rf \
     academicons* \
   && texhash \
-  && fc-cache -fv
+  && fc-cache -fsv
