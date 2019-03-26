@@ -27,10 +27,6 @@
 if (params.help) exit 0, helpMessage()
 if (!params.tex) exit 1, 'No tex file, see --help for more information'
 
-biblio = file(params.biblio)
-pictures = file(params.pictures)
-tex = Channel.fromPath(params.tex)
-
 /*
 ================================================================================
 =                                 P R O C E S S                                =
@@ -41,7 +37,11 @@ startMessage()
 
 importLibrary 'lib/compile.nf'
 
-RunXelatex(biblio, pictures, tex)
+RunXelatex(
+  file(params.biblio),
+  file(params.pictures),
+  Channel.fromPath(params.tex)
+)
 
 /*
 ================================================================================
