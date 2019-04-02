@@ -1,5 +1,7 @@
 #!/usr/bin/env nextflow
 
+nextflow.preview.dsl=2
+
 /*
 ================================================================================
 =                     C  O  M  P  I  L  E  -  L  A  T  E  X                    =
@@ -50,7 +52,7 @@ process RunXelatex {
     file tex
 
   output:
-    file("*.pdf") into pdf
+    file("*.pdf")
 
   script:
     notes = params.notes == '' ? "" : "\"\\PassOptionsToClass{notes}{beamer}\\input{$tex}\""
@@ -65,6 +67,10 @@ process RunXelatex {
   ${xelatexScript}
   ${renameScript}
   """
+}
+
+workflow {
+  RunXelatex(biblio, pictures, tex)
 }
 
 /*

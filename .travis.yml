@@ -4,7 +4,7 @@ jdk: openjdk8
 services: docker
 
 env:
-  - NXF_VER=18.10.1
+  - NXF_VER=19.0.0.modules-draft10-SNAPSHOT
   - NXF_VER=''
 
 before_install:
@@ -16,4 +16,4 @@ install:
   - sudo mv nextflow /usr/local/bin/
 
 script:
-  - nextflow run main.nf -profile test
+  - NXF_VER=19.0.0.modules-draft10-SNAPSHOT nextflow run main.nf -profile test
